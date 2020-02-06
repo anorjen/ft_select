@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:59:59 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/05 16:46:41 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/06 16:37:36 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	set_termenv(char *termcap)
 	g_term->se = tgetstr("se", &termcap);
 	g_term->up = tgetstr("up", &termcap);
 	g_term->do_ = tgetstr("do", &termcap);
+	g_term->cl = tgetstr("cl", &termcap);
 }
 
 void	set_termcap(char **env)

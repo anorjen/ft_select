@@ -1,55 +1,39 @@
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
-# include <unistd.h>
+# include "main.h"
 # include <termios.h>
 # include <term.h>
 
-typedef struct	s_color
+#define BUF_SIZE 100
+
+typedef enum	e_keycode
 {
-	char	*type;
-	int		color;
-}				t_color;
+	ENTER = 10,
+	SPACE = 32,
+	ESC = 27,
+	BACKSPACE = 127,
+	UP = 4283163,
+	DOWN = 4348699,
+	RIGHT = 4414235,
+	LEFT = 4479771,
+	DELETE = 2117294875L
+}				t_keycode;
 
-t_color	type_colors[6] = {
-	{"c", 1},
-	{"h", 2},
-	{"txt", 3},
-	{"pdf", 4},
-	{"doc", 5},
-	{NULL, 0}
-};
-
-enum keycode
-{
-	KC_TAB = 9,
-	KC_ENTER = 10,
-	KC_ESC = 27,
-	KC_BS = 127,
-	KC_DEL = 1295,
-	KC_UP = 1183,
-	KC_DOWN = 1184,
-	KC_RIGHT = 1185,
-	KC_LEFT = 1186,
-	KC_HOME = 1190,
-	KC_END = 1188
-};
-
-typedef int		(*t_spe_key) (t_list *list);
+typedef int		(*t_spe_key) (t_select *select);
 
 typedef struct	s_actions
 {
-	int			key;
+	long		key;
 	t_spe_key	action;
-
 }				t_actions;
 
-t_action	key_actions[] = {
-	{KC_LEFT, do_left},
-	{KC_RIGHT, do_right},
-	{KC_UP, do_up},
-	{KC_DOWN, do_down},
-	{KC_SPACE, do_mark},
-	{KC_ENTER, do_confirm},
+t_action	key_actions[7] = {
+	{LEFT, do_left},
+	{RIGHT, do_right},
+	{UP, do_up},
+	{DOWN, do_down},
+	{SPACE, do_mark},
+	{ENTER, do_confirm},
 	{0, NULL}
 };
 
@@ -65,18 +49,28 @@ typedef struct	s_term
 	char		*se;
 	char		*up;
 	char		*do_;
-
+	char		*cl;
 }				t_term;
 
-typedef struct	s_select
+typedef struct		s_arg
 {
-	char		*name;
-	int			mark;
-	int			size;
-	int			color;
-}				t_select;
+	char			*value;
+	int				is_mark;
+	char			*color;
+	struct s_arg	*prev;
+	struct s_arg	*next;
+}					t_arg;
 
-t_term			g_term;
+typedef struct		s_select
+{
+	t_arg			*active_arg;
+	t_arg			*args;
+	int				colum_size;
+	int				args_size;
+	int				mark_size;
+}					t_select;
+
+t_term					g_term;
 static struct termios	g_stored_settings;
 
 char					*get_termcap(void);
