@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yharwyn- <yharwyn-@student.42.fr>          +#+  +:+       +#+         #
+#    By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 12:12:25 by agottlie          #+#    #+#              #
-#    Updated: 2019/03/27 11:54:13 by yharwyn-         ###   ########.fr        #
+#    Updated: 2020/02/07 17:55:33 by anorjen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,12 @@ OBJ = 	*.o
 
 INC = libft.h
 
+CC = clang
+
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -c $(SRC) -I $(INC)
+	$(CC) $(FLAGS) -c $(SRC) -I $(INC)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 

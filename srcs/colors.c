@@ -1,4 +1,4 @@
-#include "colors.h"
+#include "ft_select.h"
 
 char	*get_color(char *color_name)
 {
@@ -7,7 +7,7 @@ char	*get_color(char *color_name)
 	if (color_name)
 	{
 		i = -1;
-		while (g_colors[++i])
+		while (g_colors[++i].name)
 		{
 			if (ft_strcmp(color_name, g_colors[i].name) == 0)
 				return (g_colors[i].color);
@@ -23,7 +23,7 @@ char	*get_type_color_name(char *type)
 	if (type)
 	{
 		i = -1;
-		while (g_type_colors[++i])
+		while (g_type_colors[++i].name)
 		{
 			if (ft_strcmp(type, g_type_colors[i].name) == 0)
 				return (g_colors[i].color);

@@ -12,11 +12,13 @@ FLAGS = -Wall -Wextra -Werror
 
 INC = ft_printf.h
 
+CC = clang
+
 all: $(NAME)
 
 $(NAME):
 	make -C libft fclean && make -C libft
-	gcc $(FLAGS) -c $(SRCS) -I$(INC)
+	$(CC) $(FLAGS) -c $(SRCS) -I$(INC)
 	ar rc $(NAME) $(OBJ) $(OBJ2)
 	ranlib $(NAME)
 
