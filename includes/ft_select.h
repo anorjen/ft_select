@@ -57,30 +57,30 @@
 // 	int				mark_size;
 // }					t_select;
 
-//colors.c
-t_color	g_colors[12] = {
-	{"black", "\033[30m"},
-	{"red", "\033[31m"},
-	{"green", "\033[32m"},
-	{"yellow", "\033[33m"},
-	{"blue", "\033[34m"},
-	{"purple", "\033[35m"},
-	{"cyan", "\033[36m"},
-	{"white", "\033[37m"},
-	{"normal", "\033[0m"},
-	{"inverse", "\033[4m"},
-	{"underline", "\033[7m"},
-	{NULL, NULL}
-};
+// //colors.c
+// t_color	g_colors[12] = {
+// 	{"black", "\033[30m"},
+// 	{"red", "\033[31m"},
+// 	{"green", "\033[32m"},
+// 	{"yellow", "\033[33m"},
+// 	{"blue", "\033[34m"},
+// 	{"purple", "\033[35m"},
+// 	{"cyan", "\033[36m"},
+// 	{"white", "\033[37m"},
+// 	{"normal", "\033[0m"},
+// 	{"inverse", "\033[4m"},
+// 	{"underline", "\033[7m"},
+// 	{NULL, NULL}
+// };
 
-t_color	g_type_colors[6] = {
-	{"c", "blue"},
-	{"h", "cyan"},
-	{"o", "green"},
-	{"pdf", "red"},
-	{"doc", "yellow"},
-	{NULL, NULL}
-};
+// t_color	g_type_colors[6] = {
+// 	{"c", "blue"},
+// 	{"h", "cyan"},
+// 	{"o", "green"},
+// 	{"pdf", "red"},
+// 	{"doc", "yellow"},
+// 	{NULL, NULL}
+// };
 
 char	*get_color(char *color_name);
 char	*get_type_color_name(char *type);
@@ -96,28 +96,30 @@ int	do_escape(t_select *select);
 int	do_delete(t_select *select);
 int	do_confirm(t_select *select);
 
-typedef int		(*t_spe_key) (t_select *select);
+// typedef int		(*t_spe_key) (t_select *select);
 
-typedef struct	s_action
-{
-	t_keycode	key;
-	t_spe_key	action;
-}				t_action;
+// typedef struct	s_action
+// {
+// 	t_keycode	key;
+// 	t_spe_key	action;
+// }				t_action;
 
-t_action	g_key_actions[10] = {
-	{LEFT, do_left},
-	{RIGHT, do_right},
-	{UP, do_up},
-	{DOWN, do_down},
-	{SPACE, do_mark},
-	{ENTER, do_confirm},
-	{ESC, do_escape},
-	{DELETE, do_delete},
-	{BACKSPACE, do_delete},
-	{ZERO, NULL}
-};
+// t_action	g_key_actions[10] = {
+// 	{LEFT, do_left},
+// 	{RIGHT, do_right},
+// 	{UP, do_up},
+// 	{DOWN, do_down},
+// 	{SPACE, do_mark},
+// 	{ENTER, do_confirm},
+// 	{ESC, do_escape},
+// 	{DELETE, do_delete},
+// 	{BACKSPACE, do_delete},
+// 	{ZERO, NULL}
+// };
 
-
+extern t_color	g_colors[12];
+extern t_color	g_type_colors[6];
+extern t_action	g_key_actions[10];
 
 t_term					*g_term;
 // t_select				g_select;

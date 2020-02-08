@@ -30,6 +30,7 @@ static t_arg	*add_arg(t_arg *args, t_arg *new)
 		last = args->prev;
 		last->next = new;
 		new->next = args;
+		args->prev = new;
 		new->prev = last;
 	}
 	return (args);
@@ -80,6 +81,7 @@ t_select	*get_select(char **input)
 		if (select->colum_size < new->size)
 			select->colum_size = new->size;
 		args = add_arg(args, new);
+		select->args_size++;
 	}
 	select->args = args;
 	select->active_arg = args;

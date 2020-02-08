@@ -75,7 +75,7 @@ int	print_args(t_select *select)
 		return (-1);
 	args = select->args;
 	i = 0;
-	while (args)
+	while (1)
 	{
 		++i;
 		if (args == select->active_arg)
@@ -89,6 +89,10 @@ int	print_args(t_select *select)
 			i = 0;
 		}
 		args = args->next;
+		if (args == select->args)
+		{
+			break ;
+		}
 	}
 	return (0);
 }
