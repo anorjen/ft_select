@@ -19,34 +19,17 @@ char	**get_input(int ac, char **av)
 
 char	**read_input()
 {
-	// int		ret;
-	// char	buf[BUF_SIZE + 1];
 	char	*str;
-	// char	*tmp;
 	char	**input;
 
 	str = NULL;
-	// while ((ret = read(0, buf, BUF_SIZE)) > 0)
-	// {
-	// 	buf[ret] = '\0';
-	// 	if (!str)
-	// 	{
-	// 		str = ft_strdup(buf);
-	// 	}
-	// 	else
-	// 	{
-	// 		tmp = str;
-	// 		str = ft_strjoin(str, buf);
-	// 		free(tmp);
-	// 	}
-	// }
 	get_next_line(0, &str);
 	input = ft_strsplit(str, ' ');
 	free(str);
 	return (input);
 }
 
-char		*get_type(char *value)
+char	*get_type(char *value)
 {
 	int		i;
 	int		size;
@@ -54,8 +37,8 @@ char		*get_type(char *value)
 	if (value)
 	{
 		size = ft_strlen(value);
-		i = -1;
-		while (++i < size)
+		i = size;
+		while (--i >= 0)
 		{
 			if (value[i] == '.' && value[i + 1] != '\0')
 				return (&(value[i + 1]));

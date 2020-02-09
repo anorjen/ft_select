@@ -6,7 +6,9 @@ INCLUDES  = -I./includes/
 INCLUDES += -I./lib/libft/
 
 SRC_PATH = ./srcs/
-SRC_FILES = colors.c doing.c input.c main.c printer.c select.c set_termcap.c
+SRC_FILES = arg.c colors.c do_action.c do_move.c init.c \
+			input.c main.c printer.c select.c set_termcap.c \
+			signal_handler.c
 
 SRC = 	$(addprefix $(SRC_PATH), $(SRC_FILES))
 

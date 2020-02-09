@@ -1,53 +1,23 @@
 #include "ft_select.h"
 
-static t_arg	*new_arg(char *value)
+void			free_select(t_select *select)
 {
-	t_arg	*new;
-
-	if ((new = (t_arg*)malloc(sizeof(t_arg))) == NULL)
-		return (NULL);
-	new->value = value;
-	new->is_mark = 0;
-	new->color = get_type_color(get_type(value));
-	new->size = ft_strlen(value);
-	new->next = new;
-	new->prev = new;
-	return (new);
-}
-
-static t_arg	*add_arg(t_arg *args, t_arg *new)
-{
+	t_arg	*args;
 	t_arg	*last;
+	t_arg	*tmp;
 
-	if (new == NULL)
-		return (args);
-	if (!args)
+	args = select->args;
+	last = args ->prev;
+	while (args != last)
 	{
-		args = new;
+		tmp = args;
+		args = args->next;
+		free(tmp->value);
+		free(tmp);
 	}
-	else
-	{
-		last = args->prev;
-		last->next = new;
-		new->next = args;
-		args->prev = new;
-		new->prev = last;
-	}
-	return (args);
-}
-
-void	del_arg(t_arg **arg)
-{
-	t_arg	*before;
-	t_arg	*after;
-
-	before = (*arg)->prev;
-	after = (*arg)->next;
-	before->next = after;
-	after->prev = before;
-	free((*arg)->value);
-	free(*arg);
-	*arg = NULL;
+	free(last->value);
+	free(last);
+	free(select);
 }
 
 static t_select	*new_select()
@@ -64,7 +34,7 @@ static t_select	*new_select()
 	return (select);
 }
 
-t_select	*get_select(char **input)
+t_select		*get_select(char **input)
 {
 	t_select	*select;
 	t_arg		*args;
