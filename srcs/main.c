@@ -15,7 +15,7 @@ static t_action	g_key_actions[10] = {
 
 int				print_char(int c)
 {
-	return(write(1, &c, 1));
+	return(write(2, &c, 1));
 }
 
 int				get_colums(int size)
@@ -23,7 +23,7 @@ int				get_colums(int size)
 	struct winsize	wins;
 	int				err;
 
-	err = ioctl(0, TIOCGWINSZ, &wins);
+	err = ioctl(2, TIOCGWINSZ, &wins);
 	if (err != -1)
 		return (wins.ws_col / (size + 1));
 	return (-1);
@@ -40,7 +40,7 @@ int				main_loop(void)
 	{
 		pr_status = print_args();
 		key = 0;
-		read(0, &key, 8);
+		read(2, &key, 8);
 		i = -1;
 		while (g_key_actions[++i].key != ZERO)
 		{

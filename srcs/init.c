@@ -24,9 +24,7 @@ void	init_signal_handlers(void)
 	signal(SIGABRT, signal_handler);
 	signal(SIGKILL, signal_handler);
 	signal(SIGSTOP, signal_handler);
-
 	signal(SIGWINCH, signal_handler);
-
 	signal(SIGTSTP, signal_handler);
 	signal(SIGCONT, signal_handler);
 }

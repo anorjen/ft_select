@@ -16,17 +16,18 @@ void	set_keypress(void)
 {
 	struct termios	new_settings;
 
-	tcgetattr(0, &g_stored_settings);
-	new_settings = g_stored_settings;
+	tcgetattr(2, &g_stored_settings);
+	tcgetattr(2, &new_settings);
+	// new_settings = g_stored_settings;
 	new_settings.c_lflag &= (~ICANON & ~ECHO);
 	new_settings.c_cc[VTIME] = 0;
 	new_settings.c_cc[VMIN] = 1;
-	tcsetattr(0, TCSANOW, &new_settings);
+	tcsetattr(2, TCSANOW, &new_settings);
 }
 
 void	reset_keypress(void)
 {
-	tcsetattr(0, TCSANOW, &g_stored_settings);
+	tcsetattr(2, TCSANOW, &g_stored_settings);
 }
 
 char	*get_termcap(void)

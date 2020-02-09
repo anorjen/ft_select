@@ -19,11 +19,25 @@ char	**get_input(int ac, char **av)
 
 char	**read_input()
 {
+	int		ret;
+	char	buf[BUF_SIZE + 1];
 	char	*str;
+	char	*tmp;
 	char	**input;
 
 	str = NULL;
-	get_next_line(0, &str);
+	while ((ret = read(0, buf, BUF_SIZE)) > 0)
+	{
+		buf[ret] = '\0';
+		if (!str)
+			str = ft_strdup(buf);
+		else
+		{
+			tmp = str;
+			str = ft_strjoin(str, buf);
+			free(tmp);
+		}
+	}
 	input = ft_strsplit(str, ' ');
 	free(str);
 	return (input);
