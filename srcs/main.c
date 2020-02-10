@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/09 22:02:03 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/10 15:10:37 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,9 @@ int				main(int ac, char **av)
 		input = read_input();
 	else
 		input = get_input(ac, av);
-	if ((g_select = get_select(input)) == NULL || g_select->args == NULL)
-	{
-		write(2, "Input ERROR!\n", 13);
-		return (1);
-	}
+	if (!input || (g_select = get_select(input)) == NULL
+								|| g_select->args == NULL)
+		fatal_error(1);
 	free(input);
 	ft_init();
 	init_signal_handlers();

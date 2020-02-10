@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:32 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/09 22:01:33 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/10 15:13:48 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 void	ft_init(void)
 {
 	extern char	**environ;
+	int			status;
 
-	set_termcap(environ);
+	status = set_termcap(environ);
+	if (status)
+		fatal_error(2);
 	set_keypress();
 	tputs(g_term->ti, 1, print_char);
 	tputs(g_term->vi, 1, print_char);
@@ -46,6 +49,6 @@ void	ft_exit(int status)
 	ft_deinit();
 	if (status == 0)
 		print_selected(g_select);
-	free_select(g_select);
+	free_select();
 	exit(status);
 }

@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:56:15 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/09 21:59:20 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/10 15:13:18 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,14 @@ void					print_selected(t_select *select);
 */
 
 t_select				*get_select(char **input);
-void					free_select(t_select *select);
+void					free_select(void);
 
 /*
 ** set_termcap.c
 */
 
 char					*get_termcap(void);
-void					set_termcap(char **env);
+int						set_termcap(char **env);
 void					set_termenv(char *termcap);
 void					reset_keypress(void);
 void					set_keypress(void);
@@ -122,5 +122,11 @@ void					set_keypress(void);
 */
 
 void					signal_handler(int signo);
+
+/*
+** fatal_error.c
+*/
+
+void					fatal_error(int nbr);
 
 #endif

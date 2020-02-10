@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:59:59 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/07 18:33:18 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/10 17:10:37 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	set_keypress(void)
 	struct termios	new_settings;
 
 	tcgetattr(2, &g_stored_settings);
-	tcgetattr(2, &new_settings);
-	// new_settings = g_stored_settings;
+	new_settings = g_stored_settings;
 	new_settings.c_lflag &= (~ICANON & ~ECHO);
 	new_settings.c_cc[VTIME] = 0;
 	new_settings.c_cc[VMIN] = 1;
@@ -61,7 +60,7 @@ void	set_termenv(char *termcap)
 	g_term->te = tgetstr("te", &termcap);
 }
 
-void	set_termcap(char **env)
+int		set_termcap(char **env)
 {
 	char	*termcap;
 
@@ -70,5 +69,7 @@ void	set_termcap(char **env)
 	if (termcap)
 	{
 		set_termenv(termcap);
+		return (0);
 	}
+	return (1);
 }

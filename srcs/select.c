@@ -6,30 +6,36 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:18 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/09 22:02:19 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/10 15:07:29 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-void			free_select(t_select *select)
+void			free_select(void)
 {
 	t_arg	*args;
 	t_arg	*last;
 	t_arg	*tmp;
 
-	args = select->args;
-	last = args ->prev;
-	while (args != last)
+	if (g_select)
 	{
-		tmp = args;
-		args = args->next;
-		free(tmp->value);
-		free(tmp);
+		args = g_select->args;
+		if (args)
+		{
+			last = args ->prev;
+			while (args && args != last)
+			{
+				tmp = args;
+				args = args->next;
+				free(tmp->value);
+				free(tmp);
+			}
+			free(last->value);
+			free(last);
+		}
+		free(g_select);
 	}
-	free(last->value);
-	free(last);
-	free(select);
 }
 
 static t_select	*new_select()

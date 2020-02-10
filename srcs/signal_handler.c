@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:29 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/09 22:02:30 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/10 14:54:44 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	suspend_signal_handler(void)
 {
 	ft_deinit();
 	signal(SIGTSTP, SIG_DFL);
-	ioctl(0, TIOCSTI, "\x1A");
+	ioctl(2, TIOCSTI, "\x1A");
 }
 
 void		stop_signal_handler(void)

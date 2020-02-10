@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:37 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/09 22:01:38 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/10 17:11:26 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,65 @@ char	**get_input(int ac, char **av)
 	return (input);
 }
 
+static int	is_newline(char **buf)
+{
+	int	i;
+
+	i = -1;
+	if (buf && *buf)
+	{
+		while ((*buf)[++i])
+		{
+			if ((*buf)[i] == '\n')
+			{
+				(*buf)[i] = '\0';
+				return (1);
+			}
+		}
+	}
+	return (0);
+}
+
+static char	*str_join(char *stra, char *strb)
+{
+	char	*tmp;
+	char	*res;
+
+	if (!strb)
+		return (stra);
+	if (!stra)
+		return (ft_strdup(strb));
+	tmp = stra;
+	res = ft_strjoin(stra, strb);
+	free(tmp);
+	return (res);
+}
+
 char	**read_input()
 {
 	int		ret;
-	char	buf[BUF_SIZE + 1];
+	char	*buf;
 	char	*str;
-	char	*tmp;
+	int		nl;
 	char	**input;
 
 	str = NULL;
+	input = NULL;
+	buf = (char*)malloc(sizeof(char) * (BUF_SIZE + 1));
 	while ((ret = read(0, buf, BUF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		if (!str)
-			str = ft_strdup(buf);
-		else
-		{
-			tmp = str;
-			str = ft_strjoin(str, buf);
-			free(tmp);
-		}
+		nl = is_newline(&buf);
+		str = str_join(str, buf);
+		if (nl)
+			break;
 	}
-	input = ft_strsplit(str, ' ');
-	free(str);
+	if (str)
+	{
+		input = ft_strsplit(str, ' ');
+		free(str);
+	}
+	free(buf);
 	return (input);
 }
 
