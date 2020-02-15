@@ -1,0 +1,33 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Launch",
+			"program": "${workspaceFolder}/ft_select",
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"name": "(lldb) Запустить",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/ft_select",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [ { "name": "squid", "value": "clam" } ],
+			"externalConsole": true,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "(lldb) Подключить",
+			"type": "cppdbg",
+			"request": "attach",
+			"program": "${workspaceFolder}/${workspaceFolderBasename}",
+			"processId": "${command:pickProcess}",
+			"MIMode": "lldb"
+		}
+    ]
+}

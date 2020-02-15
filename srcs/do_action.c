@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:21 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 16:38:15 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/15 21:24:40 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	do_confirm(t_select *select)
 int	do_escape(t_select *select)
 {
 	(void)select;
-	return (-1);
+	return (0);
 }
 
 int	do_delete(t_select *select)

@@ -5,6 +5,9 @@ LIBFT = ./lib/libft/libft.a
 INCLUDES  = -I./includes/
 INCLUDES += -I./lib/libft/
 
+HEADERS_FILES = ft_select.h newtypes.h
+HEADERS = $(addprefix ./includes/, $(HEADERS_FILES))
+
 SRC_PATH = ./srcs/
 SRC_FILES = arg.c colors.c do_action.c do_move.c init.c \
 			input.c main.c printer.c select.c set_termcap.c \
@@ -20,7 +23,7 @@ OBJ = *.o
 CG = \033[92m
 all: start $(NAME)
 
-$(NAME):
+$(NAME): $(HEADERS)
 	@make -sC ./lib/libft/
 	@$(CC)  -c $(FLAG) $(SRC) $(INCLUDES)
 	@$(CC)  -ltermcap -o $(NAME) $(OBJ) -L. $(LIBFT) $(INCLUDES)

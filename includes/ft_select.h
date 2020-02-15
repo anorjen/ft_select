@@ -6,12 +6,13 @@
 /*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:56:15 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 16:35:52 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/15 19:33:35 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
+
 
 # include <unistd.h>
 # include <stdlib.h>

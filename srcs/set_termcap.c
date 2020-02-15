@@ -6,9 +6,10 @@
 /*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:59:59 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 16:41:49 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/15 22:34:41 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_select.h"
 
@@ -16,17 +17,17 @@ void	set_keypress(void)
 {
 	struct termios	new_settings;
 
-	tcgetattr(2, &g_stored_settings);
+	tcgetattr(0, &g_stored_settings);
 	new_settings = g_stored_settings;
 	new_settings.c_lflag &= (~ICANON & ~ECHO);
 	new_settings.c_cc[VTIME] = 0;
 	new_settings.c_cc[VMIN] = 1;
-	tcsetattr(2, TCSANOW, &new_settings);
+	tcsetattr(0, TCSANOW, &new_settings);
 }
 
 void	reset_keypress(void)
 {
-	tcsetattr(2, TCSANOW, &g_stored_settings);
+	tcsetattr(0, TCSANOW, &g_stored_settings);
 }
 
 char	*get_termcap(void)
