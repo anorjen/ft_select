@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/10 15:10:37 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/15 16:39:43 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_action	g_key_actions[10] = {
 
 int				print_char(int c)
 {
-	return(write(2, &c, 1));
+	return (write(2, &c, 1));
 }
 
 int				get_colums(int size)

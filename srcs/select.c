@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   select.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:18 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/10 15:07:29 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/15 16:41:14 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			free_select(void)
 		args = g_select->args;
 		if (args)
 		{
-			last = args ->prev;
+			last = args->prev;
 			while (args && args != last)
 			{
 				tmp = args;
@@ -38,7 +38,7 @@ void			free_select(void)
 	}
 }
 
-static t_select	*new_select()
+static t_select	*new_select(void)
 {
 	t_select	*select;
 

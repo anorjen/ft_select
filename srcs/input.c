@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:37 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/10 17:11:26 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/15 16:39:23 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-char	**get_input(int ac, char **av)
+char		**get_input(int ac, char **av)
 {
 	int		i;
 	int		size;
@@ -63,7 +63,7 @@ static char	*str_join(char *stra, char *strb)
 	return (res);
 }
 
-char	**read_input()
+char		**read_input(void)
 {
 	int		ret;
 	char	*buf;
@@ -80,7 +80,7 @@ char	**read_input()
 		nl = is_newline(&buf);
 		str = str_join(str, buf);
 		if (nl)
-			break;
+			break ;
 	}
 	if (str)
 	{
@@ -91,7 +91,7 @@ char	**read_input()
 	return (input);
 }
 
-char	*get_type(char *value)
+char		*get_type(char *value)
 {
 	int		i;
 	int		size;

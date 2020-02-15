@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:12 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/09 22:02:13 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/02/15 16:40:37 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,13 @@ static void	print_arg(t_arg *arg, int colum_size)
 	print_nchars(' ', colum_size - arg->size + 1);
 }
 
-int			print_args()
+int			print_args(void)
 {
-	int	colums;
-	int	i;
+	int		colums;
+	int		i;
 	t_arg	*args;
 
 	colums = get_colums(g_select->colum_size);
-	// write(1, "\n",1);
-	// 	write(1, ft_itoa(colums), ft_strlen(ft_itoa(colums)));
 	if (colums <= 0)
 		return (-1);
 	args = g_select->args;
