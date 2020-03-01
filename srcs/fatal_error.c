@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fatal_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:09 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 16:38:25 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/01 15:16:41 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	fatal_error(int nbr)
 		write(2, "ft_select: Input ERROR!\n", 24);
 	else if (nbr == 2)
 		write(2, "ft_select: Termcap ERROR!\n", 26);
+	else if (nbr == 3)
+		write (2, "ft_select: It is not tty\n", 25);
 	else
 		write(2, "ft_select: Undefined ERROR!\n", 28);
 	free_select();
