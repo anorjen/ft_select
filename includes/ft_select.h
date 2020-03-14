@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:56:15 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/14 17:25:04 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/14 17:38:04 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <termios.h>
 # include <term.h>
 # include <signal.h>
+# include <fcntl.h>
 
 # include "libft.h"
 # include "newtypes.h"

@@ -6,11 +6,10 @@
 /*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/14 17:35:55 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/14 17:38:16 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "ft_select.h"
 
 static t_action	g_key_actions[10] = {
