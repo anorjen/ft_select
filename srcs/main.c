@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/14 17:32:26 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/14 17:35:55 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int				main(int ac, char **av)
 
 	status = 0;
 	g_tty_fd = get_tty();
-	printf("%d\n", g_tty_fd);
 	if (ac == 1)
 		input = read_input();
 	else
