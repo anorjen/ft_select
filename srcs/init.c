@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:32 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 22:18:48 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/14 15:29:05 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void	ft_init(void)
 
 void	ft_deinit(void)
 {
-	// write (1, "ft_deinit: 1\n", 13);
 	reset_keypress();
-	// write (1, "ft_deinit: 2\n", 13);
 	tputs(g_term->ve, 1, print_char);
 	tputs(g_term->te, 1, print_char);
 }
@@ -48,9 +46,7 @@ void	init_signal_handlers(void)
 
 void	ft_exit(int status)
 {
-	// write (1, "ft_exit: 1\n", 11);
 	ft_deinit();
-	// write (1, "ft_exit: 2\n", 11);
 	if (status == 0)
 		print_selected(g_select);
 	free_select();
