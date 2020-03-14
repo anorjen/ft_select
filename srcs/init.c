@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:32 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/14 15:29:05 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/14 17:11:09 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	ft_exit(int status)
 	if (status == 0)
 		print_selected(g_select);
 	free_select();
+	close(g_tty_fd);
 	exit(status);
 }

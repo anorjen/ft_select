@@ -6,13 +6,12 @@
 /*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:56:15 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 19:33:35 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/14 17:25:04 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
-
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -27,6 +26,7 @@
 
 # define BUF_SIZE 100
 
+int						g_tty_fd;
 t_term					*g_term;
 t_select				*g_select;
 static struct termios	g_stored_settings;

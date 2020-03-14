@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:12 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/01 15:37:29 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/14 17:15:12 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ static void	print_nchars(char c, int counts)
 	i = -1;
 	while (++i < counts)
 		str[i] = c;
-	write(0, str, counts);
+	write(g_tty_fd, str, counts);
 	free(str);
 }
 
 static void	print_color(char *color)
 {
-	write(0, color, ft_strlen(color));
+	write(g_tty_fd, color, ft_strlen(color));
 }
 
 static void	print_arg(t_arg *arg, int colum_size)
 {
 	print_color(arg->color ? arg->color : get_color("white"));
-	write(0, arg->value, arg->size);
+	write(g_tty_fd, arg->value, arg->size);
 	print_color(get_color("normal"));
 	print_nchars(' ', colum_size - arg->size + 1);
 }
@@ -77,7 +77,7 @@ int			print_args(void)
 			print_color(get_color("inverse"));
 		print_arg(args, g_select->colum_size);
 		if (i % colums == 0)
-			write(0, "\n", 1);
+			write(g_tty_fd, "\n", 1);
 		args = args->next;
 		if (args == g_select->args)
 			break ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/01 15:43:15 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/14 17:32:26 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_action	g_key_actions[10] = {
 
 int				print_char(int c)
 {
-	return (write(0, &c, 1));
+	return (write(g_tty_fd, &c, 1));
 }
 
 int				get_colums(int size)
@@ -36,7 +36,7 @@ int				get_colums(int size)
 	struct winsize	wins;
 	int				err;
 
-	err = ioctl(0, TIOCGWINSZ, &wins);
+	err = ioctl(g_tty_fd, TIOCGWINSZ, &wins);
 	if (err != -1)
 		return (wins.ws_col / (size + 1));
 	return (-1);
@@ -55,7 +55,7 @@ int				main_loop(void)
 	{
 		pr_status = print_args();
 		key = 0;
-		read(0, &key, 8);
+		read(g_tty_fd, &key, 8);
 		i = -1;
 		while (g_key_actions[++i].key != ZERO)
 		{
@@ -70,14 +70,37 @@ int				main_loop(void)
 	}
 }
 
+int				get_tty(void)
+{
+	int			i;
+	int			tty_fd;
+	char		*tty_name;
+
+	tty_name = NULL;
+	i = -1;
+	while (++i < 3)
+	{
+		if (isatty(i) != 0)
+		{
+			tty_name = ttyname(i);
+			break ;
+		}
+	}
+	if (tty_name == NULL)
+		fatal_error(3);
+	if ((tty_fd = open(tty_name, O_RDWR)) == -1)
+		fatal_error(3);
+	return (tty_fd);
+}
+
 int				main(int ac, char **av)
 {
 	char		**input;
 	int			status;
 
-	if (isatty(0) == 0)
-		fatal_error(3);
 	status = 0;
+	g_tty_fd = get_tty();
+	printf("%d\n", g_tty_fd);
 	if (ac == 1)
 		input = read_input();
 	else
