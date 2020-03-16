@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/14 17:38:16 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/16 18:56:23 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,25 @@ int				get_tty(void)
 	return (tty_fd);
 }
 
+static void		check_sym(char **input)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (input[++i])
+	{
+		j = -1;
+		while (input[i][++j])
+		{
+			if (!ft_isprint(input[i][j]))
+			{
+				input[i][j] = '?';
+			}
+		}
+	}
+}
+
 int				main(int ac, char **av)
 {
 	char		**input;
@@ -103,6 +122,8 @@ int				main(int ac, char **av)
 		input = read_input();
 	else
 		input = get_input(ac, av);
+	if (input)
+		check_sym(input);
 	if (!input || (g_select = get_select(input)) == NULL
 								|| g_select->args == NULL)
 		fatal_error(1);

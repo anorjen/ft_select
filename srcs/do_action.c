@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_action.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:21 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 21:24:40 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/16 18:58:56 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	do_confirm(t_select *select)
 int	do_escape(t_select *select)
 {
 	(void)select;
-	return (0);
+	return (-1);
 }
 
 int	do_delete(t_select *select)
