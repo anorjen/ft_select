@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:12 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/14 17:15:12 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/03/19 16:58:30 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,14 @@ int			print_args(void)
 	int		i;
 	t_arg	*args;
 
+	tputs(g_term->cl, 1, print_char);
 	colums = get_colums(g_select->colum_size);
 	if (colums <= 0)
+	{
+		write(g_tty_fd, "NO SPACE\nPRESS ESC\nTO EXIT", 26);
 		return (1);
+	}
 	args = g_select->args;
-	tputs(g_term->cl, 1, print_char);
 	i = 0;
 	while (1)
 	{
