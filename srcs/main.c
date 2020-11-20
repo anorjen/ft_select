@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/16 18:56:23 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/20 13:18:53 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,17 @@ static t_action	g_key_actions[10] = {
 int				print_char(int c)
 {
 	return (write(g_tty_fd, &c, 1));
+}
+
+int				get_lines()
+{
+	struct winsize	wins;
+	int				err;
+
+	err = ioctl(g_tty_fd, TIOCGWINSZ, &wins);
+	if (err != -1)
+		return (wins.ws_row);
+	return (-1);
 }
 
 int				get_colums(int size)

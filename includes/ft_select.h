@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_select.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:56:15 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/14 17:38:04 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/20 17:05:21 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "newtypes.h"
 
 # define BUF_SIZE 100
+# define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 int						g_tty_fd;
 t_term					*g_term;
@@ -89,6 +90,7 @@ char					*get_type(char *value);
 
 int						print_char(int c);
 int						get_colums(int size);
+int						get_lines(void);
 void					ft_init(void);
 void					ft_deinit(void);
 void					ft_exit(int status);

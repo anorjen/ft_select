@@ -1,0 +1,6 @@
+.vscode/*
+*.o
+test/*
+test
+lib/libft/libft.a
+ft_select

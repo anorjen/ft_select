@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   select.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:18 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 16:41:14 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/20 14:07:57 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_select		*get_select(char **input)
 		new = new_arg(input[i]);
 		if (select->colum_size < new->size)
 			select->colum_size = new->size;
+		new->position = i;
 		args = add_arg(args, new);
 		select->args_size++;
 	}
