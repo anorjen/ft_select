@@ -1,33 +1,38 @@
 {
-	"version": "0.2.0",
 	"configurations": [
 		{
-			"type": "lldb",
-			"request": "launch",
-			"name": "Launch",
-			"program": "${workspaceFolder}/ft_select",
-			"args": [],
-			"cwd": "${workspaceFolder}"
-		},
-		{
-			"name": "(lldb) Запустить",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/ft_select",
-			"args": [],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [ { "name": "squid", "value": "clam" } ],
-			"externalConsole": true,
-			"MIMode": "lldb"
-		},
-		{
-			"name": "(lldb) Подключить",
+			"name": "(gdb) Подключить",
 			"type": "cppdbg",
 			"request": "attach",
-			"program": "${workspaceFolder}/${workspaceFolderBasename}",
+			"program": "${workspaceFolder}/ft_select",
 			"processId": "${command:pickProcess}",
-			"MIMode": "lldb"
-		}
-    ]
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Включить автоматическое форматирование для gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+	{
+		"name": "(gdb) Запустить",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${workspaceFolder}/ft_select",
+		"args": ["./test/*"],
+		"stopAtEntry": false,
+		"cwd": "${workspaceFolder}",
+		"environment": [{"name": "TERM", "value": "xterm-256color"}],
+		"externalConsole": false,
+		"MIMode": "gdb",
+		"setupCommands": [
+			{
+				"description": "Включить автоматическое форматирование для gdb",
+				"text": "-enable-pretty-printing",
+				"ignoreFailures": true
+			}
+		]
+	}
+	]
 }

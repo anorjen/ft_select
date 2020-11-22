@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/16 18:56:23 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/22 17:57:43 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,6 @@ static t_action	g_key_actions[10] = {
 int				print_char(int c)
 {
 	return (write(g_tty_fd, &c, 1));
-}
-
-int				get_colums(int size)
-{
-	struct winsize	wins;
-	int				err;
-
-	err = ioctl(g_tty_fd, TIOCGWINSZ, &wins);
-	if (err != -1)
-		return (wins.ws_col / (size + 1));
-	return (-1);
 }
 
 int				main_loop(void)
@@ -67,29 +56,6 @@ int				main_loop(void)
 		if (status <= 0)
 			return (status);
 	}
-}
-
-int				get_tty(void)
-{
-	int			i;
-	int			tty_fd;
-	char		*tty_name;
-
-	tty_name = NULL;
-	i = -1;
-	while (++i < 3)
-	{
-		if (isatty(i) != 0)
-		{
-			tty_name = ttyname(i);
-			break ;
-		}
-	}
-	if (tty_name == NULL)
-		fatal_error(3);
-	if ((tty_fd = open(tty_name, O_RDWR)) == -1)
-		fatal_error(3);
-	return (tty_fd);
 }
 
 static void		check_sym(char **input)
