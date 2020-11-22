@@ -1,34 +1,63 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/08/24 15:42:48 by anorjen           #+#    #+#              #
+#    Updated: 2020/11/22 18:04:11 by anorjen          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = ft_select
+
 CC = clang
+FLAGS = -Wall -Werror -Wextra -g
+LIBRARIES = -lft -ltermcap -L$(LIBFT_DIRECTORY)
+INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS)
 
-LIBFT = ./lib/libft/libft.a
-INCLUDES  = -I./includes/
-INCLUDES += -I./lib/libft/
+LIBFT = $(LIBFT_DIRECTORY)libft.a
+LIBFT_DIRECTORY = ./libft/
+LIBFT_HEADERS = $(LIBFT_DIRECTORY)/includes
 
-HEADERS_FILES = ft_select.h newtypes.h
-HEADERS = $(addprefix ./includes/, $(HEADERS_FILES))
+HEADERS_LIST = 	ft_select.h \
+				newtypes.h
 
-SRC_PATH = ./srcs/
-SRC_FILES = arg.c colors.c do_action.c do_move.c init.c \
-			input.c main.c printer.c select.c set_termcap.c \
-			signal_handler.c fatal_error.c
+HEADERS_DIRECTORY = ./includes/
+HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-SRC = 	$(addprefix $(SRC_PATH), $(SRC_FILES))
+SOURCES_DIRECTORY = ./srcs/
+SOURCES_LIST = 	arg.c \
+				colors.c \
+				do_action.c \
+				do_move.c \
+				fatal_error.c \
+				init.c \
+				input.c \
+				main.c \
+				printer.c \
+				select.c \
+				set_termcap.c \
+				signal_handler.c \
+				tty.c \
+				printer1.c
 
+SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
-FLAG = -Wall -Werror -Wextra -g
-OBJ = $(SRC:.c=.o)
-OBJ = *.o
+OBJECTS_DIRECTORY = objects/
+OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
+OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
-CG = \033[92m
+# COLORS
+
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
+.PHONY: all clean fclean re
+
 all: start $(NAME)
-
-$(NAME): $(HEADERS)
-	@make -sC ./lib/libft/
-	@$(CC)  -c $(FLAG) $(SRC) $(INCLUDES)
-	@$(CC)  -ltermcap -o $(NAME) $(OBJ) -L. $(LIBFT) $(INCLUDES)
-
-	@echo "\r$(CY)------------ GO -----------------"
 
 start:
 	@echo "\r$(CG)compile..."
@@ -41,12 +70,35 @@ start:
 	@echo "	|  00   000  0000  000  000000 000000 000000   0000     00     |	"
 	@echo "	----------------------------------------------------------------	"
 
+$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS)
+	@$(CC) $(FLAGS) -o $(NAME)  $(OBJECTS) $(LIBRARIES) $(INCLUDES)
+	@echo "\n$(NAME): $(GREEN)$(NAME) object files were created$(RESET)"
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+
+$(OBJECTS_DIRECTORY):
+	@mkdir -p $(OBJECTS_DIRECTORY)
+	@echo "$(NAME): $(GREEN)$(OBJECTS_DIRECTORY) was created$(RESET)"
+
+$(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS)
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
+
+$(LIBFT):
+	@echo "$(NAME): $(GREEN)creating $(LIBFT)...$(RESET)"
+	@$(MAKE) -sC $(LIBFT_DIRECTORY)
+
 clean:
-	@make clean -sC lib/libft/
-	@rm -rf $(OBJ)
+	@$(MAKE) -sC $(LIBFT_DIRECTORY) clean
+	@rm -rf $(OBJECTS_DIRECTORY)
+	@echo "$(NAME): $(RED)$(OBJECTS_DIRECTORY) was deleted$(RESET)"
+	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 fclean: clean
-	@make fclean -sC lib/libft/
-	@rm -rf $(NAME)
+	@rm -f $(LIBFT)
+	@echo "$(NAME): $(RED)$(LIBFT) was deleted$(RESET)"
+	@rm -f $(NAME)
+	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
-re: fclean all clean
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all

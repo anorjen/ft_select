@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:37 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 16:39:23 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/22 17:55:31 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char		**get_input(int ac, char **av)
 	char	**input;
 
 	size = ac - 1;
-	input = (char**)malloc(sizeof(char*) * (size + 1));
+	if ((input = (char**)malloc(sizeof(char*) * (size + 1))) == NULL)
+		return (NULL);
 	input[size] = NULL;
 	i = 0;
 	while (++i < size + 1)
@@ -27,25 +28,6 @@ char		**get_input(int ac, char **av)
 		input[i - 1] = ft_strdup(av[i]);
 	}
 	return (input);
-}
-
-static int	is_newline(char **buf)
-{
-	int	i;
-
-	i = -1;
-	if (buf && *buf)
-	{
-		while ((*buf)[++i])
-		{
-			if ((*buf)[i] == '\n')
-			{
-				(*buf)[i] = '\0';
-				return (1);
-			}
-		}
-	}
-	return (0);
 }
 
 static char	*str_join(char *stra, char *strb)
@@ -68,7 +50,6 @@ char		**read_input(void)
 	int		ret;
 	char	*buf;
 	char	*str;
-	int		nl;
 	char	**input;
 
 	str = NULL;
@@ -77,14 +58,11 @@ char		**read_input(void)
 	while ((ret = read(0, buf, BUF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		nl = is_newline(&buf);
 		str = str_join(str, buf);
-		if (nl)
-			break ;
 	}
 	if (str)
 	{
-		input = ft_strsplit(str, ' ');
+		input = ft_strspliter(str, " \t\n");
 		free(str);
 	}
 	free(buf);

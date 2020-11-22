@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:56:15 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/20 17:05:21 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/22 18:05:58 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ char					*get_type(char *value);
 */
 
 int						print_char(int c);
-int						get_colums(int size);
-int						get_lines(void);
 void					ft_init(void);
 void					ft_deinit(void);
 void					ft_exit(int status);
@@ -100,8 +98,17 @@ void					init_signal_handlers(void);
 ** printer.c
 */
 
-int						print_args();
+int						print_args(void);
 void					print_selected(t_select *select);
+
+/*
+** printer1.c
+*/
+
+void					print_selected(t_select *select);
+void					print_nchars(char c, int counts);
+void					print_color(char *color);
+void					print_arg(t_arg *arg, int colum_size);
 
 /*
 ** select.c
@@ -131,5 +138,13 @@ void					signal_handler(int signo);
 */
 
 void					fatal_error(int nbr);
+
+/*
+** tty.c
+*/
+
+int						get_colums(int size);
+int						get_lines(void);
+int						get_tty(void);
 
 #endif
