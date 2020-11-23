@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:18 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/20 14:07:57 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/22 18:50:16 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static t_select	*new_select(void)
 	return (select);
 }
 
-t_select		*get_select(char **input)
+t_select		*get_select(t_usym **input)
 {
 	t_select	*select;
 	t_arg		*args;

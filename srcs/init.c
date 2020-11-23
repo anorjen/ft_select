@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:32 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/14 17:11:09 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/22 19:52:15 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_init(void)
 {
-	extern char	**environ;
 	int			status;
 
-	status = set_termcap(environ);
+	status = set_termcap();
 	if (status)
 		fatal_error(2);
 	set_keypress();

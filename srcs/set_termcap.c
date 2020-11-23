@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_termcap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:59:59 by anorjen           #+#    #+#             */
-/*   Updated: 2020/03/14 17:15:38 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/22 19:51:32 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,10 @@ void	set_termenv(char *termcap)
 	g_term->te = tgetstr("te", &termcap);
 }
 
-int		set_termcap(char **env)
+int		set_termcap(void)
 {
 	char	*termcap;
 
-	env = NULL;
 	termcap = get_termcap();
 	if (termcap)
 	{

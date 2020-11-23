@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:59:36 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/20 14:08:18 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/22 18:50:51 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct		s_term
 
 typedef struct		s_arg
 {
-	char			*value;
+	t_usym			*value;
 	int				position;
 	int				is_mark;
 	char			*color;

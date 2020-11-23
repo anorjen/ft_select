@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:12 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/22 18:16:08 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/22 19:49:35 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_arg		*get_begin_arg(int w_cols, int w_lines)
 {
 	int	b_pos;
 	int	a_col;
-	int	a_line;
 	int	a_pos;
 	int	w_elems;
 
@@ -36,7 +35,6 @@ t_arg		*get_begin_arg(int w_cols, int w_lines)
 	{
 		a_pos = g_select->active_arg->position;
 		a_col = a_pos % w_cols;
-		a_line = a_pos / w_cols + 1;
 		w_elems = w_lines * w_cols;
 		b_pos = a_pos - a_col - (w_elems - w_cols);
 		return (get_arg_n(b_pos));

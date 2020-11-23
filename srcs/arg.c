@@ -3,25 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   arg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anorjen <anorjen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:09 by anorjen           #+#    #+#             */
-/*   Updated: 2020/02/15 16:37:57 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/23 11:28:13 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-t_arg	*new_arg(char *value)
+t_arg	*new_arg(t_usym *value)
 {
 	t_arg	*new;
+	char	*str;
 
 	if ((new = (t_arg*)malloc(sizeof(t_arg))) == NULL)
 		return (NULL);
 	new->value = value;
 	new->is_mark = 0;
-	new->color = get_type_color(get_type(value));
-	new->size = ft_strlen(value);
+	str = ft_utoc(value);
+	new->color = get_type_color(get_type(str));
+	free(str);
+	new->size = ft_ustrlen(value);
 	new->next = new;
 	new->prev = new;
 	return (new);

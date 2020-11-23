@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:56:15 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/22 18:05:58 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/22 19:51:45 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <signal.h>
 # include <fcntl.h>
 
+# include "ft_utf8.h"
 # include "libft.h"
 # include "newtypes.h"
 
@@ -31,14 +32,14 @@
 int						g_tty_fd;
 t_term					*g_term;
 t_select				*g_select;
-static struct termios	g_stored_settings;
+struct termios			g_stored_settings;
 
 /*
 ** arg.c
 */
 
 void					del_arg(t_arg **arg);
-t_arg					*new_arg(char *value);
+t_arg					*new_arg(t_usym *value);
 t_arg					*add_arg(t_arg *args, t_arg *new);
 
 /*
@@ -99,7 +100,6 @@ void					init_signal_handlers(void);
 */
 
 int						print_args(void);
-void					print_selected(t_select *select);
 
 /*
 ** printer1.c
@@ -114,7 +114,7 @@ void					print_arg(t_arg *arg, int colum_size);
 ** select.c
 */
 
-t_select				*get_select(char **input);
+t_select				*get_select(t_usym **input);
 void					free_select(void);
 
 /*
@@ -122,7 +122,7 @@ void					free_select(void);
 */
 
 char					*get_termcap(void);
-int						set_termcap(char **env);
+int						set_termcap(void);
 void					set_termenv(char *termcap);
 void					reset_keypress(void);
 void					set_keypress(void);

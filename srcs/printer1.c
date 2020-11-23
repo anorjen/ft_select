@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:02:48 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/22 18:16:56 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/23 11:01:09 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_selected(t_select *select)
 	{
 		if (args->is_mark)
 		{
-			write(1, args->value, args->size);
+			uwrite(1, args->value, args->size);
 			write(1, " ", 1);
 		}
 		args = args->next;
@@ -55,7 +55,7 @@ void	print_arg(t_arg *arg, int colum_size)
 	if (arg->is_mark)
 		print_color(get_color("inverse"));
 	print_color(arg->color ? arg->color : get_color("white"));
-	write(g_tty_fd, arg->value, arg->size);
+	uwrite(g_tty_fd, arg->value, arg->size);
 	print_color(get_color("normal"));
 	print_nchars(' ', colum_size - arg->size + 1);
 }
