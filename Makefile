@@ -6,7 +6,7 @@
 #    By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/24 15:42:48 by anorjen           #+#    #+#              #
-#    Updated: 2020/11/22 18:04:11 by anorjen          ###   ########.fr        #
+#    Updated: 2020/11/23 10:58:06 by anorjen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,8 @@ start:
 	@echo "	|  00   000  0000  000  000000 000000 000000   0000     00     |	"
 	@echo "	----------------------------------------------------------------	"
 
-$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS)
-	@$(CC) $(FLAGS) -o $(NAME)  $(OBJECTS) $(LIBRARIES) $(INCLUDES)
+$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS) $(HEADERS)
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) $(LIBRARIES) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)$(NAME) object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
@@ -79,7 +79,7 @@ $(OBJECTS_DIRECTORY):
 	@mkdir -p $(OBJECTS_DIRECTORY)
 	@echo "$(NAME): $(GREEN)$(OBJECTS_DIRECTORY) was created$(RESET)"
 
-$(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS)
+$(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
