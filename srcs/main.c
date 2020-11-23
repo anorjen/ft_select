@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/23 11:28:18 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/23 15:58:57 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,7 @@ static t_usym	**convert2u8(char **input)
 	res[size] = NULL;
 	i = -1;
 	while (input[++i])
-	{
 		res[i] = ft_ctou(input[i]);
-	}
 	return (res);
 }
 
@@ -125,18 +123,17 @@ int				main(int ac, char **av)
 	int			status;
 
 	status = 0;
+	u_input = NULL;
 	g_tty_fd = get_tty();
 	if (ac == 1)
 		input = read_input();
 	else
 		input = get_input(ac, av);
-	if (input == NULL)
+	if (input == NULL || (u_input = convert2u8(input)) == NULL)
 		fatal_error(1);
-	u_input = convert2u8(input);
 	free_input(input);
 	check_sym(u_input);
-	if (!u_input || (g_select = get_select(u_input)) == NULL
-								|| g_select->args == NULL)
+	if ((g_select = get_select(u_input)) == NULL || g_select->args == NULL)
 		fatal_error(1);
 	ft_init();
 	init_signal_handlers();
