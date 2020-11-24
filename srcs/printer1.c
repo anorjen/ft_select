@@ -6,11 +6,16 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:02:48 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/23 11:01:09 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/24 11:32:46 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
+
+int		print_char(int c)
+{
+	return (write(g_tty_fd, &c, 1));
+}
 
 void	print_selected(t_select *select)
 {

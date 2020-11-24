@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:37 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/22 17:55:31 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/24 11:31:32 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,17 @@ char		*get_type(char *value)
 		}
 	}
 	return (NULL);
+}
+
+void		free_input(char **input)
+{
+	int	i;
+
+	i = -1;
+	while (input[++i])
+	{
+		free(input[i]);
+	}
+	free(input);
+	input = NULL;
 }

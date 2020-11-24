@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:02:02 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/23 15:58:57 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/24 11:32:21 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ static t_action	g_key_actions[10] = {
 	{BACKSPACE, do_delete},
 	{ZERO, NULL}
 };
-
-int				print_char(int c)
-{
-	return (write(g_tty_fd, &c, 1));
-}
 
 int				main_loop(void)
 {
@@ -101,19 +96,6 @@ static t_usym	**convert2u8(char **input)
 	while (input[++i])
 		res[i] = ft_ctou(input[i]);
 	return (res);
-}
-
-void			free_input(char **input)
-{
-	int	i;
-
-	i = -1;
-	while (input[++i])
-	{
-		free(input[i]);
-	}
-	free(input);
-	input = NULL;
 }
 
 int				main(int ac, char **av)

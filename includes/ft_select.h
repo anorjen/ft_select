@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 21:56:15 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/22 19:51:45 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/24 11:33:08 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ void					ft_exit(int status);
 char					**get_input(int ac, char **av);
 char					**read_input();
 char					*get_type(char *value);
+void					free_input(char **input);
 
 /*
 ** main.c
 */
 
-int						print_char(int c);
 void					ft_init(void);
 void					ft_deinit(void);
 void					ft_exit(int status);
@@ -109,6 +109,7 @@ void					print_selected(t_select *select);
 void					print_nchars(char c, int counts);
 void					print_color(char *color);
 void					print_arg(t_arg *arg, int colum_size);
+int						print_char(int c);
 
 /*
 ** select.c
