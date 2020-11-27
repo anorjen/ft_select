@@ -6,7 +6,7 @@
 /*   By: anorjen <anorjen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 22:01:37 by anorjen           #+#    #+#             */
-/*   Updated: 2020/11/24 11:31:32 by anorjen          ###   ########.fr       */
+/*   Updated: 2020/11/27 09:44:21 by anorjen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,23 @@
 char		**get_input(int ac, char **av)
 {
 	int		i;
+	int		j;
 	int		size;
 	char	**input;
 
 	size = ac - 1;
 	if ((input = (char**)malloc(sizeof(char*) * (size + 1))) == NULL)
 		return (NULL);
-	input[size] = NULL;
+	j = 0;
 	i = 0;
 	while (++i < size + 1)
 	{
-		input[i - 1] = ft_strdup(av[i]);
+		if (ft_is_str_empty(av[i]))
+			continue ;
+		input[j++] = ft_strdup(av[i]);
 	}
+	while (j < size + 1)
+		input[j++] = NULL;
 	return (input);
 }
 
