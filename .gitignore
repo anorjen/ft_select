@@ -1,7 +1,5 @@
 .vscode/*
 *.o
-test/*
-test
+test*
 lib/libft/libft.a
 ft_select
-Makefile1
